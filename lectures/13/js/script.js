@@ -28,7 +28,7 @@ displayCurrentQuestion();
 document.getElementById("quiz-message").style.display = 'none';
 function displayNext() {
     /*Write your code here */
-    if(currentQuestion<2)
+    if(currentQuestion<=3)
     {
         var x=document.querySelector("input[type=radio]:checked");
         if(x==null)
@@ -38,9 +38,8 @@ function displayNext() {
             mess.innerText='please select an answer';
             var ChoiceListid=document.getElementById("choice-list");
             ChoiceListid.innerHTML='';
-
         }
-        else {
+        else if (currentQuestion<3){
             if(x.id==questions[currentQuestion].correctAnswer)
             {
                 correctAnswers++;
@@ -49,10 +48,22 @@ function displayNext() {
             ChoiceListid.innerHTML='';
             currentQuestion++;
         }
-        displayCurrentQuestion();
+        if(currentQuestion!=3) {
+            displayCurrentQuestion();
+        }
+        else
+        {
+            displayScore();
+            var mess=document.getElementById("quiz-message");
+            mess.style.display="none";
+            currentQuestion++;
+            var Next = document.getElementById("next-btn");
+            Next.innerText='Reset';
+        }
+
     }
     else {
-        displayScore();
+        resetQuiz();
 
     }
 
@@ -65,7 +76,7 @@ function displayCurrentQuestion() {
     var ChoiceListid=document.getElementById("choice-list");
     for(var x=0;x<questions[currentQuestion].choices.length;x++)
     {
-        ChoiceListid.innerHTML += '<li>'+'<input id=x type="radio" name="ch">'+ questions[currentQuestion].choices[x] +'</li>';
+        ChoiceListid.innerHTML += '<li>'+'<input id="'+x+'" type="radio" name="ch">'+ questions[currentQuestion].choices[x] +'</li>';
     }
 
 
@@ -75,6 +86,9 @@ function resetQuiz() {
     currentQuestion = 0;
     correctAnswers = 0;
     hideScore();
+    var Next = document.getElementById("next-btn");
+    Next.innerText='Reset';
+    displayCurrentQuestion();
 }
 function displayScore() {
     document.getElementById("result").innerHTML = "you scored: " + correctAnswers + " out of: " + questions.length;
