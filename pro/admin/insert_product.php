@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+require "Connections/Functions.php"
+?>
 <head>
     <meta charset="UTF-8">
     <title>Insert Product</title>
@@ -39,11 +42,9 @@
                     </div>
                     <select class="form-control" id="pro_cat" name="pro_cat">
                         <option>Select Category</option>
-                        <option>Mobile</option>
-                        <option>Laptop</option>
-                        <option>Tablet</option>
-                        <option>Watch</option>
-                        <option>Camera</option>
+                       <?php
+                        getCatsAdmin();
+                       ?>
                     </select>
                 </div>
             </div>
@@ -59,12 +60,9 @@
                     </div>
                     <select class="form-control" id="pro_brand" name="pro_brand">
                         <option>Select Brand</option>
-                        <option>Apple</option>
-                        <option>Samsung</option>
-                        <option>Oppo</option>
-                        <option>Dell</option>
-                        <option>HP</option>
-                        <option>Sony</option>
+                        <?php
+                            getBrandsAdmin();
+                        ?>
                     </select>
                 </div>
             </div>
