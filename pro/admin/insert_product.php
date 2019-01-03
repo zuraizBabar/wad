@@ -1,10 +1,24 @@
 <?php
-require_once "db_connection.php";
+require_once "../Connections/db_connection.php";
+
+if(isset($_POST['insert_pro'])){
+    $pro_title=$_POST['pro_title'];
+    $pro_cat=$_POST['pro_cat'];
+    $pro_brand=$_POST['pro_brand'];
+    $pro_price=$_POST['pro_price'];
+    $pro_desc=$_POST['pro_desc'];
+    $pro_keywords=$_POST['pro_kw'];
+    $Query = "insert into Products(pro_cat,pro_brand,pro_title,pro_price,pro_desc,pro_Keywords)
+              values('$pro_cat','$pro_brand','$pro_title','$pro_price','$pro_desc','$pro_keywords')";
+
+    echo $Query;
+    mysqli_query($Con,$Query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require "Connections/Functions.php"
+require "../Connections/Functions.php"
 ?>
 <head>
     <meta charset="UTF-8">
@@ -22,7 +36,7 @@ require "Connections/Functions.php"
 <body>
 <div class="container">
     <h1 class="text-center my-4"><i class="fas fa-plus fa-md"></i> <span class="d-none d-sm-inline"> Add New </span> Product </h1>
-    <form>
+    <form action="" method="post">
         <div class="row">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto">
                 <label for="pro_title" class="float-md-right"> <span class="d-sm-none d-md-inline"> Product </span> Title:</label>
@@ -46,7 +60,7 @@ require "Connections/Functions.php"
                     <select class="form-control" id="pro_cat" name="pro_cat">
                         <option>Select Category</option>
                        <?php
-                        getCatsAdmin();
+                         getCatsAdmin();
                        ?>
                     </select>
                 </div>
@@ -121,7 +135,7 @@ require "Connections/Functions.php"
         <div class="row my-3">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto"></div>
             <div class="col-sm-9 col-md-8 col-lg-4 col-xl-4">
-                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
+                <button name="insert_pro" type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
             </div>
         </div>
     </form>
