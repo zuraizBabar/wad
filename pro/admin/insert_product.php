@@ -1,19 +1,20 @@
 <?php
 require_once "../Connections/db_connection.php";
 
-if(isset($_POST['insert_pro'])){
-    $pro_title=$_POST['pro_title'];
-    $pro_cat=$_POST['pro_cat'];
-    $pro_brand=$_POST['pro_brand'];
-    $pro_price=$_POST['pro_price'];
-    $pro_desc=$_POST['pro_desc'];
-    $pro_keywords=$_POST['pro_kw'];
+if(isset($_POST['insert_pro'])) {
+    $pro_title = $_POST['pro_title'];
+    $pro_cat = $_POST['pro_cat'];
+    $pro_brand = $_POST['pro_brand'];
+    $pro_price = $_POST['pro_price'];
+    $pro_desc = $_POST['pro_desc'];
+    $pro_keywords = $_POST['pro_kw'];
     $Query = "insert into Products(pro_cat,pro_brand,pro_title,pro_price,pro_desc,pro_Keywords)
               values('$pro_cat','$pro_brand','$pro_title','$pro_price','$pro_desc','$pro_keywords')";
 
     echo $Query;
-    mysqli_query($Con,$Query);
+    mysqli_query($Con, $Query);
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,7 @@ require "../Connections/Functions.php"
 <body>
 <div class="container">
     <h1 class="text-center my-4"><i class="fas fa-plus fa-md"></i> <span class="d-none d-sm-inline"> Add New </span> Product </h1>
+
     <form action="" method="post">
         <div class="row">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto">
@@ -59,9 +61,11 @@ require "../Connections/Functions.php"
                     </div>
                     <select class="form-control" id="pro_cat" name="pro_cat">
                         <option>Select Category</option>
+
                        <?php
                          getCatsAdmin();
                        ?>
+
                     </select>
                 </div>
             </div>
@@ -78,8 +82,10 @@ require "../Connections/Functions.php"
                     <select class="form-control" id="pro_brand" name="pro_brand">
                         <option>Select Brand</option>
                         <?php
+
                             getBrandsAdmin();
-                        ?>
+
+                            ?>
                     </select>
                 </div>
             </div>
@@ -91,7 +97,7 @@ require "../Connections/Functions.php"
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-image"></i></div>
                     </div>
-                    <input class="form-control" type="file" id="pro_img" name="pro_img">
+                    <input class="form-control" type="file" id="pro_image" name="pro_image">
                 </div>
             </div>
         </div>
@@ -115,7 +121,7 @@ require "../Connections/Functions.php"
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-key"></i></div>
                     </div>
-                    <input class="form-control" type="text" id="pro_kw" name="pro_kw" placeholder="Enter Product Keywords">
+                    <input class="form-control" type="text" id="pro_keywords" name="pro_keywords" placeholder="Enter Product Keywords">
                 </div>
             </div>
         </div>
@@ -135,10 +141,13 @@ require "../Connections/Functions.php"
         <div class="row my-3">
             <div class="d-none d-sm-block col-sm-3 col-md-4 col-lg-2 col-xl-2 mt-auto"></div>
             <div class="col-sm-9 col-md-8 col-lg-4 col-xl-4">
-                <button name="insert_pro" type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
+            <button name="insert_pro" type="submit" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
+
+                <button type="submit" name="insert_pro" class="btn btn-primary btn-block"><i class="fas fa-plus"></i> Insert Now </button>
             </div>
         </div>
     </form>
 </div>
 </body>
 </html>
+
