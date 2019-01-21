@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION['user_email'])){
+    header('location: login.php?not_admin=You are not Admin!');
+}
+
 if(isset($_POST['insert_pro'])){
     //getting text data from the fields
     $pro_title = $_POST['pro_title'];

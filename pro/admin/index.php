@@ -1,5 +1,9 @@
 <?php
+session_start();
 require_once "db_connection.php";
+if(!isset($_SESSION['user_email'])){
+    header('location: login.php?not_admin=You are not Admin!');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +87,7 @@ require_once "db_connection.php";
             </div>
         </nav>
         <div class="container">
+            <h2 class="text-center text-primary"><?php echo @$_GET['logged_in']?></h2>
             <?php
             if(isset($_GET['insert_product'])){
                 include ('insert_product.php');
