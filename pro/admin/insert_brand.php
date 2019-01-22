@@ -14,7 +14,7 @@ if(isset($_POST['insert_btn'])) {
 <!DOCTYPE html>
 <html lang="en">
 <?php
-require "../Connections/Functions.php"
+require "functions.php"
 ?>
 <head>
     <meta charset="UTF-8">
