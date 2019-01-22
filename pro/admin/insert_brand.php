@@ -1,6 +1,8 @@
 <?php
 require_once "db_connection.php";
-
+if(!isset($_SESSION['user_email'])){
+    header('location: login.php?not_admin=You are not Admin!');
+}
 if(isset($_POST['insert_btn'])) {
     $pro_title = $_POST['cat_title'];
     $Query = "insert into Brands(Brands_Title)
