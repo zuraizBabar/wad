@@ -42,7 +42,7 @@ if(!isset($_SESSION['user_email'])){
                 </a>
             </li>
             <li>
-                <a href="index.php?CategoryInsert.php">
+                <a href="index.php?insert_category">
                     <i class="fas fa-plus"></i> Insert New Category
                 </a>
             </li>
@@ -52,7 +52,7 @@ if(!isset($_SESSION['user_email'])){
                 </a>
             </li>
             <li>
-                <a href="BrandInsert.php">
+                <a href="index.php?insert_brand">
                     <i class="fas fa-plus"></i> Insert New Brand
                 </a>
             </li>
